@@ -54,6 +54,7 @@ it('it should find all the fruit baskets for a given fruit type BANANA', async f
     assert.equal(from2[1].unit_price, 25);
 })
 
+
 after(function(){
     pool.end();
 });
