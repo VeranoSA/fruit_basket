@@ -36,22 +36,22 @@ it('it should insert/create new basket', async function(){
     assert.equal(from2.quantity, 10);
     assert.equal(from2.unit_price, 25);
 })
-it('it find all the fruit baskets for a given fruit type BANANA', async function(){
+it('it should find all the fruit baskets for a given fruit type BANANA', async function(){
     await factoryBasket.CreateBasket('Pear', 20, 5)
     await factoryBasket.CreateBasket('Banana', 15, 25)
     await factoryBasket.CreateBasket('Banana', 30, 25)
 
-    const from = await factoryBasket.FindFruit('Banana').rows[0];
+    const from = await factoryBasket.FindFruit('Banana');
 
-    assert.equal(from.fruit, 'Banana');
-    assert.equal(from.quantity, 15);
-    assert.equal(from.unit_price, 25);
+    assert.equal(from[0].fruit, 'Banana');
+    assert.equal(from[0].quantity, 15);
+    assert.equal(from[0].unit_price, 25);
 
-    const from2 = await factoryBasket.FindFruit('Banana').rows[1];
+    const from2 = await factoryBasket.FindFruit('Banana');
 
-    assert.equal(from2.fruit, 'Banana');
-    assert.equal(from2.quantity, 30);
-    assert.equal(from2.unit_price, 25);
+    assert.equal(from2[1].fruit, 'Banana');
+    assert.equal(from2[1].quantity, 30);
+    assert.equal(from2[1].unit_price, 25);
 })
 
 });
