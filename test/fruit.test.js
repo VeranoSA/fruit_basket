@@ -4,7 +4,7 @@ const factoryFun = require('../fruitFactory')
 const pg = require("pg");
 const Pool = pg.Pool;
 
-const connectionString = process.env.DATABASE_URL || 'postgres://tebza:12345@localhost/mybasket';
+const connectionString = process.env.DATABASE_URL || 'postgres://tebza:12345@localhost:5432/mybasket';
 
 const pool = new Pool({
     connectionString,
@@ -53,5 +53,9 @@ it('it should find all the fruit baskets for a given fruit type BANANA', async f
     assert.equal(from2[1].quantity, 30);
     assert.equal(from2[1].unit_price, 25);
 })
+
+after(function(){
+    pool.end();
+});
 
 });
