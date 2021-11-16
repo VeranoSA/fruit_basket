@@ -1,3 +1,7 @@
+Status Badge
+[![Node.js CI](https://github.com/VeranoSA/fruit_basket/actions/workflows/node.js.yml/badge.svg)](https://github.com/VeranoSA/fruit_basket/actions/workflows/node.js.yml)
+
+
 # Fruit basket
 Create a Factory Function to manage fruit baskets.
 
