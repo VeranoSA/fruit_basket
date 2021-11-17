@@ -70,7 +70,7 @@ it('it should show the total price for a given fruit basket,', async function(){
  
     await factoryBasket.CreateBasket('Peach', 10, 3);
 
-    assert.equal(await factoryBasket.BasketTotalPrice({ fruit: 'Peach', total: 30 }));
+    assert.equal(await factoryBasket.BasketTotalPrice({ fruit: 'Peach', total: 30 }, 30));
 
 })
 
