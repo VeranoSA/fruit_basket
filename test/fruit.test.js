@@ -4,7 +4,7 @@ const factoryFun = require('../fruitFactory')
 const pg = require("pg");
 const Pool = pg.Pool;
 
-const connectionString = process.env.DATABASE_URL || 'postgresql://tebza:12345@localhost:5432/mybasket';
+const connectionString = process.env.DATABASE_URL || 'postgresql://coder:12345@localhost:5432/postgres';
 
 const pool = new Pool({
     connectionString,
