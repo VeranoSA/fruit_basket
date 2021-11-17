@@ -18,6 +18,7 @@ async function BasketTotalPrice(totalprice){
    const prices = await pool.query('SELECT fruit, (quantity * unit_price) AS total FROM fruit_basket WHERE fruit = $1',[totalprice]);
     return prices.rows[0];
 }
+//show the sum of the total of the fruit baskets for a given fruit type.
 async function SumTotalBasket(totalprice){
     const prices = await pool.query('SELECT fruit, (quantity * unit_price) AS sum FROM fruit_basket WHERE fruit = $1',[totalprice]);
      return prices.rows[0];
