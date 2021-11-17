@@ -54,6 +54,37 @@ it('it should find all the fruit baskets for a given fruit type BANANA', async f
     assert.equal(from2[1].unit_price, 25);
 })
 
+it('it should update fruit baskets quantity for a given fruit type fruit', async function(){
+
+    await factoryBasket.CreateBasket('Banana', 30, 15);
+    await factoryBasket.UpdateFruitNum('Banana', 20);
+
+    const from = await factoryBasket.FindFruit('Banana');
+
+    assert.equal(from[0].fruit, 'Banana');
+    assert.equal(from[0].quantity, 50);
+
+})
+
+it('it should show the total price for a given fruit basket,', async function(){
+ 
+    await factoryBasket.CreateBasket('Peach', 10, 3);
+
+    assert.equal(await factoryBasket.BasketTotalPrice({ fruit: 'Peach', total: 30 }));
+
+})
+
+it('it should show the sum of the total of the fruit baskets for a given fruit type.', async function(){
+ 
+    await factoryBasket.CreateBasket('Peach', 10, 3);
+    await factoryBasket.CreateBasket('Peach', 10, 3);
+    await factoryBasket.CreateBasket('Peach', 10, 3);
+    await factoryBasket.CreateBasket('Peach', 10, 3);
+
+    assert.equal(await factoryBasket.SumTotalBasket({ fruit: 'Peach', sum: 120 }));
+
+})
+
 
 after(function(){
     pool.end();
