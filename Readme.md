@@ -1,6 +1,3 @@
-# Status Badge
-
-[![Build Status](https://app.travis-ci.com/VeranoSA/fruit_basket.svg?branch=master)](https://app.travis-ci.com/VeranoSA/fruit_basket)
 
 # Fruit basket
 Create a Factory Function to manage fruit baskets.
