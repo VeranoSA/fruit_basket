@@ -24,11 +24,17 @@ async function SumTotalBasket(fruit){
         return sum.rows[0].quantity
  }
 
+ //Additionl function added after review
+ async function SelectAll(){
+    return await (await pool.query ('SELECT * FROM fruit_basket')).rows[0];
+ }
+
 return {
     CreateBasket,
     FindFruit,
     UpdateFruitNum,
     BasketTotalPrice,
-    SumTotalBasket
+    SumTotalBasket,
+    SelectAll
 }
 }

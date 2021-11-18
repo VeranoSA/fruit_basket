@@ -24,34 +24,29 @@ it('it should insert/create new basket', async function(){
     await factoryBasket.CreateBasket('Pear', 20, 5)
     await factoryBasket.CreateBasket('Banana', 10, 25)
 
-    const from = await (await pool.query ('SELECT * FROM fruit_basket')).rows[0];
+    const from = await factoryBasket.SelectAll();
 
     assert.equal(from.fruit, 'Pear');
     assert.equal(from.quantity, 20);
     assert.equal(from.unit_price, 5);
 
-    const from2 = await (await pool.query ('SELECT * FROM fruit_basket')).rows[1];
-
-    assert.equal(from2.fruit, 'Banana');
-    assert.equal(from2.quantity, 10);
-    assert.equal(from2.unit_price, 25);
 })
 it('it should find all the fruit baskets for a given fruit type BANANA', async function(){
     await factoryBasket.CreateBasket('Pear', 20, 5)
     await factoryBasket.CreateBasket('Banana', 15, 25)
     await factoryBasket.CreateBasket('Banana', 30, 25)
 
-    const from = await factoryBasket.FindFruit('Banana');
+    const findFruit= await factoryBasket.FindFruit('Banana');
 
-    assert.equal(from[0].fruit, 'Banana');
-    assert.equal(from[0].quantity, 15);
-    assert.equal(from[0].unit_price, 25);
+    assert.equal(findFruit[0].fruit, 'Banana');
+    assert.equal(findFruit[0].quantity, 15);
+    assert.equal(findFruit[0].unit_price, 25);
 
-    const from2 = await factoryBasket.FindFruit('Banana');
+    const findFruit2 = await factoryBasket.FindFruit('Banana');
 
-    assert.equal(from2[1].fruit, 'Banana');
-    assert.equal(from2[1].quantity, 30);
-    assert.equal(from2[1].unit_price, 25);
+    assert.equal(findFruit2[1].fruit, 'Banana');
+    assert.equal(findFruit2[1].quantity, 30);
+    assert.equal(findFruit2[1].unit_price, 25);
 })
 
 it('it should update fruit baskets quantity for a given fruit type fruit', async function(){
@@ -59,10 +54,10 @@ it('it should update fruit baskets quantity for a given fruit type fruit', async
     await factoryBasket.CreateBasket('Banana', 30, 15);
     await factoryBasket.UpdateFruitNum('Banana', 20);
 
-    const from = await factoryBasket.FindFruit('Banana');
+    const findFruit = await factoryBasket.FindFruit('Banana');
 
-    assert.equal(from[0].fruit, 'Banana');
-    assert.equal(from[0].quantity, 50);
+    assert.equal(findFruit[0].fruit, 'Banana');
+    assert.equal(findFruit[0].quantity, 50);
 
 })
 
