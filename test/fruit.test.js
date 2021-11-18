@@ -70,18 +70,15 @@ it('it should show the total price for a given fruit basket,', async function(){
  
     await factoryBasket.CreateBasket('Peach', 10, 3);
 
-    assert.equal(await factoryBasket.BasketTotalPrice({ fruit: 'Peach', total: 30 }, 30));
+    assert.deepEqual(await factoryBasket.BasketTotalPrice('Peach'), {fruit: 'Peach', total: 30});
 
 })
 
 it('it should show the sum of the total of the fruit baskets for a given fruit type.', async function(){
  
     await factoryBasket.CreateBasket('Peach', 10, 3);
-    await factoryBasket.CreateBasket('Peach', 10, 3);
-    await factoryBasket.CreateBasket('Peach', 10, 3);
-    await factoryBasket.CreateBasket('Peach', 10, 3);
-
-    assert.equal(await factoryBasket.SumTotalBasket({ fruit: 'Peach', sum: 120 }));
+    
+    assert.deepEqual(await factoryBasket.SumTotalBasket('Peach'), 10);
 
 })
 

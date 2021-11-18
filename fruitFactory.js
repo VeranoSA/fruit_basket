@@ -14,14 +14,14 @@ async function UpdateFruitNum(fruitsName, qty){
     await pool.query('UPDATE fruit_basket SET quantity = quantity + $2 WHERE fruit = $1', [fruitsName, qty])
 } 
     //show the total price for a given fruit basket,
-async function BasketTotalPrice(totalprice){
-   const prices = await pool.query('SELECT fruit, (quantity * unit_price) AS total FROM fruit_basket WHERE fruit = $1',[totalprice]);
+async function BasketTotalPrice(fruit){
+   const prices = await pool.query('SELECT fruit, (quantity * unit_price) AS total FROM fruit_basket WHERE fruit = $1',[fruit]);
     return prices.rows[0];
 }
 //show the sum of the total of the fruit baskets for a given fruit type.
-async function SumTotalBasket(totalprice){
-    const prices = await pool.query('SELECT fruit, (quantity * unit_price) AS sum FROM fruit_basket WHERE fruit = $1',[totalprice]);
-     return prices.rows[0];
+async function SumTotalBasket(fruit){
+    const sum = await pool.query('SELECT quantity FROM fruit_basket WHERE fruit = $1', [fruit]);
+        return sum.rows[0].quantity
  }
 
 return {
