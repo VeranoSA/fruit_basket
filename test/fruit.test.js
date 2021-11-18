@@ -22,13 +22,12 @@ describe('Fruit Basket', function(){
 
 it('it should insert/create new basket', async function(){
     await factoryBasket.CreateBasket('Pear', 20, 5)
-    await factoryBasket.CreateBasket('Banana', 10, 25)
 
-    const from = await factoryBasket.SelectAll();
+    const selectAll = await factoryBasket.SelectAll();
 
-    assert.equal(from.fruit, 'Pear');
-    assert.equal(from.quantity, 20);
-    assert.equal(from.unit_price, 5);
+    assert.equal(selectAll.fruit, 'Pear');
+    assert.equal(selectAll.quantity, 20);
+    assert.equal(selectAll.unit_price, 5);
 
 })
 it('it should find all the fruit baskets for a given fruit type BANANA', async function(){
